@@ -43,6 +43,8 @@ My initial reasons:
 
 Real reasons:
 
+> - __TODO__
+
 ## CI vs. other/existing options
 
 __TODO: Compare__
@@ -197,9 +199,9 @@ bioc_use_devel: true
 # But ...
 ```
 
-##
+## {.flexbox .vcenter}
 
-__TODO: disappointment/premature celebration gif__
+![disappointment](images/disappointment.gif)
 
 ## Still can't (easily or at all)
 
