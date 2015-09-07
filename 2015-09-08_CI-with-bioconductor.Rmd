@@ -89,7 +89,7 @@ Regular and automated running of `R CMD build` and `R CMD check` when you make c
 
 ### Options
 
-- [https://travis-ci.org](https://travis-ci.org)
+- [https://travis-ci.org/](https://travis-ci.org/)
 - [https://jenkins-ci.org/](https://jenkins-ci.org/)
 - [https://codeship.com/](https://codeship.com/)
 - [https://circleci.com/](https://circleci.com/)
@@ -115,16 +115,16 @@ Regular and automated running of `R CMD build` and `R CMD check` when you make c
 
 ### Pros
 
-- Only CI with native R support
+- Only CI that has native R support
     - But still incomplete ...
 - Supports both Linux and OS X
 - Biggest R community
-- Simple integration with code coverage services via [https://github.com/jimhester/covr](https://github.com/jimhester/covr)
+- Simple integration with code coverage services [Codecov](https://codecov.io/) and [Coveralls)[https://coveralls.io/] via [https://github.com/jimhester/covr](https://github.com/jimhester/covr)
 
 ### Cons
 
 - No Windows support
-    - Might try [http://www.appveyor.com/](http://www.appveyor.com/) and [https://github.com/krlmlr/r-appveyor/](https://github.com/krlmlr/r-appveyor/)
+  but that is provided by [http://www.appveyor.com/](AppVeyor), e.g. [https://github.com/krlmlr/r-appveyor/](https://github.com/krlmlr/r-appveyor/)
 
 </div>
 
