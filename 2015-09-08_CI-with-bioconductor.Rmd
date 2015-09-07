@@ -1,6 +1,6 @@
 ---
 title: "Using continuous integration services when developing Bioconductor packages"
-author: "Peter Hickey ([@PeteHaitch](https://github.com/PeteHaitch/))"
+author: "Peter Hickey (@PeteHaitch)"
 date: "8 September 2015"
 output: 
   ioslides_presentation:
@@ -8,7 +8,8 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = FALSE,
+                      comment = ">#")
 ```
 
 ## What this talk is
@@ -30,27 +31,42 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## What is CI for R/BioC packages?
 
-> Automated and regular running of `R CMD build` and `R CMD check` when you make changes to your R package
-
-- __TODO: Note that these mostly test on a flavour of linux (and use VMs)__
+Regular and automated running of `R CMD build` and `R CMD check` when you make changes to your R package
 
 ## The why
 
-My initial reasons:
+> - Because I don't run `R CMD build` and `R CMD check` as often as I should
+> - Because if I do then I only run them on __my setup__
+> - Get automatic checking of pull requests 
 
-> - All the cool kids do it
-> - It beat writing my PhD
+# How's CI different from XYZ? {.smaller}
 
-Real reasons:
+## [win-builder](http://win-builder.r-project.org/)
 
-> - __TODO__
+- __Be nice :)__ 
+- One machine, provided and maintained in donated time by Uwe Ligges (R-core & CRAN maintainer for Windows)
+- "Please do not upload Bioconductor packages or CRAN packages"
+- No (immediate) GitHub integration
+    - But might using `devtools::build_win()`
+- See first point
 
-## CI vs. other/existing options
+## [Bioconductor multiple platform build/check report](http://bioconductor.org/checkResults/devel/bioc-LATEST/)
 
-__TODO: Compare__
+- __Package must be already part of Bioconductor__
+- Software packages built daily
+- Release branch
+    - Linux (Ubuntu 14.04.2 LTS)
+    - Windows Server 2008 R2 Enterprise SP1 (64-bit)
+    - Mac OS X Snow Leopard (10.6.8)
+    - Mac OS X Mavericks (10.9.5)
+- Devel branch
+    - Linux (Ubuntu 14.04.2 LTS)
+    - Windows Server 2012 R2 Enterprise SP1 (64-bit)
+    - Mac OS X Snow Leopard (10.6.8)
 
-- win-builder
-- BioC build machines
+# What follows assumes you use GitHub
+
+# Don't worry, options exist if you don't
 
 ## Version control
 
@@ -67,10 +83,6 @@ __TODO: Compare__
 
 </div>
 
-# What follows assumes you use GitHub
-
-# Don't worry, options exist if you don't
-
 ## Continuous Integration
 
 <div class="columns-2">
@@ -85,13 +97,12 @@ __TODO: Compare__
 - [https://drone.io/](https://drone.io/)
 - [http://www.appveyor.com/](http://www.appveyor.com/)
 - [http://wercker.com/](http://wercker.com/)
-    - [(Currently unaddressed) concerns about permissions required by _wercker_](https://github.com/wercker/support/issues/20)
 - [https://en.wikipedia.org/wiki/Comparison_of_continuous_integration_software](https://en.wikipedia.org/wiki/Comparison_of_continuous_integration_software)
 
 ### Considerations
 
-> - Operating systems supported
 > - Native R support
+> - Operating system support
 > - Code coverage support (via [https://github.com/jimhester/covr](https://github.com/jimhester/covr))
 
 </div>
@@ -123,20 +134,28 @@ __TODO: Compare__
 
 ## A word of warning
 
-- CI + R are a moving target
-- Even more so once you throw BioC into the mix
+> - R + CI are a moving target
+> - Even more so once you throw Bioconductor into the mix
 
 ## Basics
 
-1. Ensure your package is on GitHub[^github]
+1. Ensure your package is on GitHub
 2. Create a `.travis.yml` file in top-level of package directory
      - Can use `devtools::use_travis()`
 3. Go to [https://travis-ci.org](https://travis-ci.org) and flick the switch on the repo you want to test
-     - __TODO: Image__
+
+## Basics
+
+<center><img src="images/travis.png" height="480px" /></center>
+
+## Basics 
+
+1. Ensure your package is on GitHub
+2. Create a `.travis.yml` file in top-level of package directory
+     - Can use `devtools::use_travis()`
+3. Go to [https://travis-ci.org](https://travis-ci.org) and flick the switch on the repo you want to test
 4. Commit and push to GitHub.
 5. Wait a few minutes for email notification of result (or follow the action [live](https://travis-ci.org/PeteHaitch/GenomicTuples) at [https://travis-ci.org](https://travis-ci.org))
-
-[^github]: Or similar (with appropriate changes)
 
 # `.travis.yml`
 
@@ -259,8 +278,7 @@ env:
 
 ## Things I want (ought to do)
 
-Yes, I'm volunteering to help:
-
+> - Yes, I'm volunteering to help
 > - Simplified `.travis.yml` for bioc-devel and bioc-release
 > - Multiple R versions with Travis's native R support
 > - Using official BioC Docker containers to replicate(?) BioC build machines
@@ -271,7 +289,10 @@ Yes, I'm volunteering to help:
 
 ## Wrapping up
 
-- __TODO: Summarise__
+> - CI saves you time
+> - Basic and simple support for R/Bioconductor with [Travis](http://docs.travis-ci.com/user/languages/r/)
+> - Advanced and more complex support for R/Bioconductor with [_r-builder_](https://github.com/metacran/r-builder)
+> - Non-Travis, non-mac/linux options are availabe but require extra work
 
 ## What other tricks you got, boy?
 
@@ -279,12 +300,11 @@ Yes, I'm volunteering to help:
 
 - Re-publishing a book website every time you make a change to the source (like [http://r-pkgs.had.co.nz/](http://r-pkgs.had.co.nz/))
 - Building vignettes and publishing them to a website
-- Automatically building a documentation website for your package.
+- Automatically building a documentation website for your package
     
 ### [https://github.com/jimhester/covr](https://github.com/jimhester/covr)
 
 - Automatically run tests, find out where you do well and where to improve
-    - __TODO: A picture of _codecov_ output__
 
 ## Further reading {.smaller}
 
@@ -303,6 +323,6 @@ Yes, I'm volunteering to help:
 
 - __Horse's mouth__: [https://github.com/jimhester/covr](https://github.com/jimhester/covr)
 
-### Slides
+### These slides
 
-- __TODO: A link to my slides__
+- [bit.ly/BioC-CI](bit.ly/BioC-CI) (or visit my GitHub page, [https://github.com/PeteHaitch/](https://github.com/PeteHaitch/))
