@@ -119,7 +119,7 @@ Regular and automated running of `R CMD build` and `R CMD check` when you make c
     - But still incomplete ...
 - Supports both Linux and OS X
 - Biggest R community
-- Simple integration with code coverage services [Codecov](https://codecov.io/) and [Coveralls)[https://coveralls.io/] via [https://github.com/jimhester/covr](https://github.com/jimhester/covr)
+- Simple integration with code coverage services [Codecov](https://codecov.io/) and [Coveralls](https://coveralls.io/) via [https://github.com/jimhester/covr](https://github.com/jimhester/covr)
 
 ### Cons
 
